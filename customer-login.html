@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Discover Local Vendors</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fcf7f7fa; /* Warm brown color */
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        
+
+        .container {
+            display: flex;
+            width: 85%;
+            max-width: 1200px;
+            background-color: #e8bbbb;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(128, 171, 241, 0.2); /* Subtle shadow */
+            overflow: hidden;
+        }
+
+        .left-section {
+            width: 45%;
+            padding: 40px;
+            background-color: #d94c29;/* Soft brown-orange */
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .left-section h1 {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .left-section p {
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        .image-container {
+            margin-top: 20px;
+            display: flex;
+        }
+
+        .image-container img {
+            margin-right: 15px;
+            max-width: 80px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for images */
+        }
+
+        .right-section {
+            width: 55%;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        form {
+            width: 100%;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 400;
+            margin-bottom: 8px;
+            color: #150d0d; /* Dark gray */
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px 15px;
+            font-size: 1em;
+            border: 1px solid #DDDDDD; /* Light gray border */
+            border-radius: 5px;
+            background-color: #F9F9F9; /* Light background */
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            border-color: #F4A261; /* Matching orange tone */
+            background-color: #FFFFFF;
+            box-shadow: 0px 0px 5px rgba(244, 162, 97, 0.6); /* Glow effect */
+        }
+
+        button[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 12px 20px;
+            font-size: 1.2em;
+            font-weight: 500;
+            color: #FFFFFF;
+            background-color: #264653; /* Deep blue-green */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #2A9D8F; /* Brighter green-blue */
+            transform: scale(1.05); /* Button grows slightly */
+        }
+
+        /* Responsive Styling */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .left-section, .right-section {
+                width: 100%;
+                padding: 20px;
+            }
+
+            .left-section {
+                text-align: center;
+            }
+             
+            .image-container {
+                justify-content: center;
+            }
+            .left-section {
+                flex: 1;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+              }
+              
+              .image-container {
+                margin-bottom: 20px;
+              }
+              
+              .band-image {
+                width: 100%;
+                height: auto;
+                display: block;
+                margin-bottom: 15px;
+                border-radius: 8px; /* Optional for rounded corners */
+              }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Left Section -->
+        <div class="left-section">
+            <h1>Discover Local Vendors with Our Digital Map</h1>
+            <p>Find unique shops, restaurants, and services in your neighborhood. Support local businesses and explore hidden gems. Register below to get started!</p>
+            <div class="image-container">
+                <!-- Replace with your leaf image -->
+                
+            </div>
+        </div>
+
+        <!-- Right Section -->
+        <div class="right-section">
+            <form action="map.html">
+                <div class="form-group">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" name="firstName" placeholder="Enter first name">
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName" placeholder="Enter last name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email *:</label>
+                    <input type="email" id="email" name="email" placeholder="Enter email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Enter password">
+                </div>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Registration</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f8d7da;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            width: 80%;
+            max-width: 800px;
+            background-color: #fddede;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .left-section {
+            width: 40%;
+            padding: 30px;
+            background-color: #e67352;
+            color: white;
+        }
+
+        .left-section h1 {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+        }
+
+        .left-section p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .right-section {
+            width: 60%;
+            padding: 30px;
+            background-color: #fddede;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #336699;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+        }
+
+        button:hover {
+            background-color: #234466;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .left-section,
+            .right-section {
+                width: 100%;
+                padding: 20px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left-section">
+            <h1>Discover Local Vendors</h1>
+            <p>Register for your government vendor ID and connect with customers through our digital map. Support local businesses and explore hidden gems!</p>
+        </div>
+        <div class="right-section">
+            <h2>Vendor Registration</h2>
+            <form id="vendorForm" onsubmit="submitForm(event)">
+                <div class="form-group">
+                    <label for="ownerName">Owner Name:</label>
+                    <input type="text" id="ownerName" name="ownerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="storeName">Store Name:</label>
+                    <input type="text" id="storeName" name="storeName" required>
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number:</label>
+                    <input type="text" id="phoneNumber" name="phoneNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="storeType">Store Type:</label>
+                    <select id="storeType" name="storeType" required>
+                        <option value="">Select Store Type</option>
+                        <option value="restaurant">Restaurant</option>
+                        <option value="shop">Shop</option>
+                        <option value="service">Service</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="location">Location:</label>
+                    <input type="text" id="location" name="location" required>
+                </div>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function submitForm(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Collect form data
+            const formData = {
+                ownerName: document.getElementById('ownerName').value,
+                storeName: document.getElementById('storeName').value,
+                phoneNumber: document.getElementById('phoneNumber').value,
+                storeType: document.getElementById('storeType').value,
+                location: document.getElementById('location').value
+            };
+
+            // Convert to JSON
+            const jsonData = JSON.stringify(formData, null, 2);
+
+            // Create a download link for the JSON file
+            const filename = "vendor_data.json";
+            const blob = new Blob([jsonData], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+            // Redirect to govern.html with JSON data in URL
+            window.location.href = 'govern.html?vendorData=' + encodeURIComponent(jsonData);
+        }
+    </script>
+</body>
+
+</html>
+

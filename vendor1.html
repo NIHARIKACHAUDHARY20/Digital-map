@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fresh Fruits Vendor</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #a75243;
+      color: white;
+    }
+    .hero-section {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      padding: 40px;
+    }
+    .hero-text {
+      flex: 1 1 300px;
+      padding: 20px;
+      background-color: #843d32;
+    }
+    .hero-text h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+    .hero-text p {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+    }
+    .hero-text a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: white;
+      color: #843d32;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    .hero-img {
+      flex: 1 1 300px;
+    }
+    .hero-img img {
+      width: 100%;
+      height: auto;
+    }
+    .product-section {
+      padding: 40px;
+      text-align: center;
+    }
+    .product-section h2 {
+      margin-bottom: 20px;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .product-card {
+      background-color: #843d32;
+      border: 1px solid #fff;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .product-card h3 {
+      margin-bottom: 10px;
+    }
+    .product-card p {
+      font-size: 0.95em;
+    }
+  </style>
+</head>
+<body>
+  <section class="hero-section">
+    <div class="hero-text">
+      <h1>Fresh Fruits Vendor</h1>
+      <p><strong>Type:</strong> Fruits Supplier<br>
+         <strong>Phone:</strong> +91-9876541234<br>
+         <strong>Location:</strong> Noida, Uttar Pradesh
+      </p>
+      <a href="map.html">Show on Map</a>
+    </div>
+    <div class="hero-img">
+      <img src="assests\fru.png" alt="Fresh Fruits">
+    </div>
+  </section>
+
+  <section class="product-section">
+    <h2>Available Products</h2>
+    <div class="products">
+      <div class="product-card">
+        <h3>Apples</h3>
+        <p>Red and green apples straight from Himachal.</p>
+      </div>
+      <div class="product-card">
+        <h3>Bananas</h3>
+        <p>Organic bananas rich in potassium.</p>
+      </div>
+      <div class="product-card">
+        <h3>Oranges</h3>
+        <p>Sweet and tangy oranges from Nagpur.</p>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vendor Map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    #map {
+      height: 90vh;
+      width: 100%;
+    }
+    .leaflet-popup-content a {
+      color: #007bff;
+      text-decoration: underline;
+    }
+    #search-container {
+      padding: 10px;
+      background-color: #f8f8f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+    #search-input {
+      padding: 8px;
+      width: 300px;
+      font-size: 16px;
+    }
+    #search-button {
+      padding: 8px 12px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div id="search-container">
+    <input type="text" id="search-input" placeholder="Search vendors or items...">
+    <button id="search-button">Search</button>
+  </div>
+
+  <div id="map"></div>
+
+  <script>
+    // Initialize map
+    const map = L.map('map').setView([28.6692, 77.4538], 13); // Centered on Ghaziabad
+
+    // Load OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Sample vendor data
+    const vendors = [
+      {
+        name: "Fresh Fruits Vendor",
+        items: ["apples", "bananas", "mangoes"],
+        lat: 28.668,
+        lng: 77.452,
+        detailsPage: "vendor1.html"
+      },
+      {
+        name: "Organic Veggies Stall",
+        items: ["spinach", "carrot", "broccoli"],
+        lat: 28.672,
+        lng: 77.455,
+        detailsPage: "vendor2.html"
+      },
+      {
+        name: "Dairy Products",
+        items: ["milk", "cheese", "butter"],
+        lat: 28.666,
+        lng: 77.448,
+        detailsPage: "vendor3.html"
+      }
+    ];
+
+    // Function to add vendor markers
+    const markers = [];
+    function addMarkers(filteredVendors) {
+      markers.forEach(marker => map.removeLayer(marker));
+      filteredVendors.forEach(vendor => {
+        const marker = L.marker([vendor.lat, vendor.lng]).addTo(map);
+        marker.bindPopup(`<b>${vendor.name}</b><br><a href="${vendor.detailsPage}" target="_blank">View Details</a>`);
+        markers.push(marker);
+      });
+    }
+
+    // Initial marker rendering
+    addMarkers(vendors);
+
+    // Search functionality
+    document.getElementById('search-button').addEventListener('click', () => {
+      const query = document.getElementById('search-input').value.toLowerCase();
+      const filtered = vendors.filter(vendor =>
+        vendor.name.toLowerCase().includes(query) ||
+        vendor.items.some(item => item.toLowerCase().includes(query))
+      );
+      addMarkers(filtered);
+    });
+  </script>
+</body>
+</html>

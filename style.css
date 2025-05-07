@@ -1,0 +1,29 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #fdf6ec;
+  }
+  .container {
+    text-align: center;
+    margin-top: 50px;
+  }
+  .login-buttons button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+  .map-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 80px);
+    gap: 10px;
+    padding: 20px;
+  }
+  .stall {
+    background: #ffd;
+    padding: 20px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    text-align: center;
+  }
+  

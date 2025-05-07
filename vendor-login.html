@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* General Body Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(to right, #030353, #030353); /* Gradient background for the page */
+        }
+
+        /* Main container for the login page */
+        .container {
+            display: flex;
+            width: 85%;
+            max-width: 900px;
+            height: 500px;
+            background-color: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Left Section Styling (Image + Gradient) */
+        .left-section {
+            flex: 1;
+            background-image: url('assests/vendorlog.png'); /* Replace with your desired image */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #ffffff;
+        }
+
+        .left-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Adds an overlay on the background image */
+            z-index: 1;
+        }
+
+        .left-section h1,
+        .left-section p {
+            position: relative;
+            z-index: 2; /* Ensures text appears above the overlay */
+        }
+
+        .left-section h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .left-section p {
+            font-size: 1.1rem;
+            text-align: center;
+            opacity: 0.9;
+        }
+
+        /* Right Section Styling (Login Form) */
+        .right-section {
+            flex: 1;
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .right-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #4a4545;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background-color: #f9f9f9;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .form-group input:focus {
+            background-color: #ffffff;
+            border-color: #4facfe;
+            box-shadow: 0 4px 8px rgba(79, 172, 254, 0.3); /* Focus Glow */
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 12px 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #ffffff;
+            background: linear-gradient(to right, #f49485, #ff6131);
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        button[type="submit"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(79, 172, 254, 0.4);
+        }
+
+        /* Media Query for Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .left-section,
+            .right-section {
+                width: 100%;
+                height: auto;
+            }
+
+            .left-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Left Side with Background Image -->
+        <div class="left-section">
+            <h1>Vendor Login</h1>
+            <p>Login to manage your shop, view orders, and connect with customers.</p>
+        </div>
+
+        <!-- Right Side with Form -->
+        <div class="right-section">
+            <h2>Login</h2>
+            <form id="vendorLoginForm" onsubmit="redirectToVendor(event)">
+                <div class="form-group">
+                    <label for="shopName">Shop Name</label>
+                    <input type="text" id="shopName" name="shopName" placeholder="Enter your shop name" required>
+                </div>
+                <div class="form-group">
+                    <label for="vendorId">Vendor ID</label>
+                    <input type="text" id="vendorId" name="vendorId" placeholder="Enter your vendor ID" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        // Redirect to specific vendor ID page
+        function redirectToVendor(event) {
+            event.preventDefault(); // Prevent form's default behavior (refreshing the page)
+            const vendorId = document.getElementById('vendorId').value.trim(); // Get the entered Vendor ID
+            if (vendorId) {
+                window.location.href = `${vendorId}.html`; // Redirect to vendor-specific page
+            } else {
+                alert('Please enter a valid Vendor ID'); // Alert if Vendor ID is empty
+            }
+        }
+    </script>
+</body>
+</html>
+
+
